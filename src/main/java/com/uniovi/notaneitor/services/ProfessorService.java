@@ -18,7 +18,7 @@ public class ProfessorService {
     @PostConstruct
     private void init() {
         professors.add(new Professor(1L, "Enol", "García", "11111111A", "Adjunto"));
-        professors.add(new Professor(1L, "Lourdes", "Tajes", "22222222B", "Titular"));
+        professors.add(new Professor(2L, "Lourdes", "Tajes", "22222222B", "Titular"));
     }
 
     public List<Professor> getProfessors() {

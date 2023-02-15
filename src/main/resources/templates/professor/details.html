@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org">
+<head th:replace="fragments/head"></head>
+<body>
+
+<!-- Barra de Navegación superior -->
+<nav th:replace="fragments/nav"></nav>
+
+<div class="container" id="main-container">
+    <h2>Detalles del profesor</h2>
+    <div class="card">
+        <div class="card-header">Nombre</div>
+        <div class="card-body">
+            <p class="card-text" th:text="${professor.nombre} + ' ' + ${professor.apellido}"> Nombre completo </p>
+        </div>
+    </div>
+    <br>
+    <div class="card">
+        <div class="card-header">DNI</div>
+        <div class="card-body">
+            <p class="card-text" th:text="${professor.dni}">00000000A</p>
+        </div>
+    </div>
+
+    <br>
+    <div class="card">
+        <div class="card-header">Categoría</div>
+        <div class="card-body">
+            <p class="card-text" th:text="${professor.categoria}">Categoría</p>
+        </div>
+    </div>
+
+</div>
+
+<footer th:replace="fragments/footer"></footer>
+</body>
+</html>
