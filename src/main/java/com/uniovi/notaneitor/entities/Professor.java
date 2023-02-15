@@ -1,8 +1,10 @@
 package com.uniovi.notaneitor.entities;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+@Entity
 public class Professor {
 
     @Id
@@ -14,6 +16,9 @@ public class Professor {
     private String categoria;
 
 
+    public  Professor(){
+
+    }
     public Professor(Long id, String nombre, String apellido, String dni, String categoria) {
         this.id = id;
         this.nombre = nombre;
