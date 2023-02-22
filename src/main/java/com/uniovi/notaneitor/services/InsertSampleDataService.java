@@ -14,7 +14,8 @@ import com.uniovi.notaneitor.entities.User;
 public class InsertSampleDataService {
     @Autowired
     private UsersService usersService;
-    @PostConstruct
+
+   // @PostConstruct
     public void init() {
         User user1 = new User("99999990A", "Pedro", "Díaz");
         user1.setPassword("123456");
@@ -28,6 +29,8 @@ public class InsertSampleDataService {
         user5.setPassword("123456");
         User user6 = new User("99999988F", "Edward", "Núñez");
         user6.setPassword("123456");
+
+
         Set user1Marks = new HashSet<Mark>() {
             {
                 add(new Mark("Nota A1", 10.0, user1));
