@@ -9,11 +9,12 @@
 <div class="container" id="main-container">
   <h2>Agregar profesor</h2>
 
-  <form class="form-horizontal" method="post" action="/professor/add">
+  <form class="form-horizontal" method="post" action="/professor/add" th:object="${professor}">
     <div class="form-group">
       <label class="control-label col-sm-2" for="nombre">Nombre:</label>
       <div class="col-sm-10">
         <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" required="true" />
+        <span class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></span>
       </div>
     </div>
 
@@ -21,6 +22,7 @@
       <label class="control-label col-sm-2" for="apellido">Apellido:</label>
       <div class="col-sm-10">          
         <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Apellido" required="true" />
+        <span class="text-danger" th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"></span>
       </div>
     </div>
 
@@ -28,6 +30,7 @@
       <label class="control-label col-sm-2" for="dni">DNI:</label>
       <div class="col-sm-10">
         <input type="text" class="form-control" id="dni" name="dni" placeholder="00000000A" required="true" />
+        <span class="text-danger" th:if="${#fields.hasErrors('dni')}" th:errors="*{dni}"></span>
       </div>
     </div>
 
@@ -35,6 +38,7 @@
       <label class="control-label col-sm-2" for="categoria">Categoría:</label>
       <div class="col-sm-10">
         <input type="text" class="form-control" id="categoria" name="categoria" placeholder="Categoría" required="true" />
+        <span class="text-danger" th:if="${#fields.hasErrors('categoria')}" th:errors="*{categoria}"></span>
       </div>
     </div>
 

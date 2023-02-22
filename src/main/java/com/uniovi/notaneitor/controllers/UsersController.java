@@ -54,16 +54,6 @@ public class UsersController {
         return "user/edit";
     }
 
-    /*
-    @RequestMapping(value = "/user/edit/{id}", method = RequestMethod.POST)
-    public String setEdit(@PathVariable Long id, @ModelAttribute User user) {
-        user.setId(id);
-        usersService.addUser(user);
-        return "redirect:/user/details/" + id;
-
-    }
-     */
-
     @RequestMapping(value = "/user/edit/{id}", method = RequestMethod.POST)
     public String setEdit(@ModelAttribute User user, @PathVariable Long id) {
         User originalUser = usersService.getUser(id);
@@ -74,6 +64,17 @@ public class UsersController {
         usersService.updateUser(originalUser);
         return "redirect:/user/details/" + id;
     }
+    /*
+    @RequestMapping(value = "/user/edit/{id}", method = RequestMethod.POST)
+    public String setEdit(@PathVariable Long id, @ModelAttribute User user) {
+        user.setId(id);
+        usersService.addUser(user);
+        return "redirect:/user/details/" + id;
+
+    }
+     */
+
+
 
 
     @RequestMapping(value = "/signup", method = RequestMethod.GET)
