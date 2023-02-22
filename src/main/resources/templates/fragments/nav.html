@@ -2,43 +2,47 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <a class="navbar-brand" href="#"></a>
     <img src="/images/student-48.png" alt="logo"/>
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar"
             aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item ">
-                <a class="nav-link" href="/home">Home<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/home" th:text="#{nav.home}"><span class="sr-only">(current)</span></a>
             </li>
+
             <li class="nav-item dropdown active">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false"> Gestión de notas
+                   aria-haspopup="true" aria-expanded="false" th:text="#{nav.marks}">
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/mark/list">Ver Notas</a>
-                    <a class="dropdown-item" href="/mark/add">Agregar Nota</a>
+                    <a class="dropdown-item" href="/mark/list" th:text="#{nav.marks.see}"></a>
+                    <a class="dropdown-item" href="/mark/add" th:text="#{nav.marks.add}"></a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="/mark/filter">Filtrar</a>
+                    <a class="dropdown-item" href="/mark/filter" th:text="#{nav.marks.filter}"></a>
                 </div>
             </li>
+
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="profesorDropdown" role="button" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false"> Gestión de profesores
+                   aria-haspopup="true" aria-expanded="false" th:text="#{nav.professors}">
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/professor/list">Ver Profesores</a>
-                    <a class="dropdown-item" href="/professor/add">Agregar profesor</a>
+                    <a class="dropdown-item" href="/professor/list" th:text="#{nav.professors.see}"></a>
+                    <a class="dropdown-item" href="/professor/add" th:text="#{nav.professors.add}"></a>
                 </div>
             </li>
 
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">Gestión de usuarios
+                   aria-haspopup="true" aria-expanded="false" th:text="#{nav.users}">
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/user/add">Agregar usuario</a>
-                    <a class="dropdown-item" href="/user/list">Ver usuarios</a>
+                    <a class="dropdown-item" href="/user/list" th:text="#{nav.users.see}"></a>
+                    <a class="dropdown-item" href="/user/add" th:text="#{nav.users.add}"></a>
                 </div>
             </li>
 
@@ -58,19 +62,23 @@
                         <img th:src="@{/images/if_spain_flag.png}" style="border: 0; float: left; margin-right: 15px"/>
                         <span th:text="#{language.es}">Español</span>
                     </a>
+                    <a class="dropdown-item" id="btnFrench" value="FR">
+                        <img th:src="@{/images/if_fr_flag.png}" style="border: 0; float: left; margin-right: 15px"/>
+                        <span th:text="#{language.fr}">Francés</span>
+                    </a>
                 </div>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="/signup">
                     <i class='fas fa-user-alt' style='font-size:16px'></i>
-                    <span th:text="#{signup.message}"></span>
+                    <span th:text="#{signup}"></span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/login">
                     <i class='fas fa-sign-in-alt' style='font-size:16px'></i>
-                    <span th:text="#{login.message}"></span>
+                    <span th:text="#{login}"></span>
                 </a>
             </li>
         </ul>
