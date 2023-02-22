@@ -15,7 +15,7 @@ public class InsertSampleDataService {
     @Autowired
     private UsersService usersService;
 
-   // @PostConstruct
+    @PostConstruct
     public void init() {
         User user1 = new User("99999990A", "Pedro", "Díaz");
         user1.setPassword("123456");
