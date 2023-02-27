@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head th:replace="fragments/head"/>
 <body>
 <nav th:replace="fragments/nav"/>
@@ -8,7 +10,7 @@
     <h3 th:text="#{welcome.private.message}"></h3>
     <p>
         <span th:text="#{welcome.user.authenticated}+ ': '"></span>
-        <b th:text="${#httpServletRequest.remoteUser}"></b>
+        <b th:inline="text" sec:authentication="principal.username"></b>
     </p>
 
     <p th:text="#{welcome.marks}"></p>
@@ -29,9 +31,9 @@
                 <td scope="row" th:text="${mark.id}"> 1</td>
                 <td th:text="${mark.description}"> Ejercicio 1</td>
                 <td th:text="${mark.score}">10</td>
-                <td><a th:href="${'/mark/details/' + mark.id}" th:text="#{welcome.marks.details}"></a></td>
-                <td><a th:href="${'/mark/edit/' + mark.id}" th:text="#{welcome.marks.edit}"></a></td>
-                <td><a th:href="${'/mark/delete/' + mark.id}" th:text="#{welcome.marks.delete}"></a></td>
+                <td><a th:href="${'/mark/details/' + mark.id}" th:text="#{details}"></a></td>
+                <td><a sec:authorize="hasRole('PROFESSOR')" th:href="${'/mark/edit/' + mark.id}" th:text="#{edit}"></a></td>
+                <td><a sec:authorize="hasRole('PROFESSOR')" th:href="${'/mark/delete/' + mark.id}" th:text="#{delete}"></a></td>
             </tr>
             </tbody>
         </table>
