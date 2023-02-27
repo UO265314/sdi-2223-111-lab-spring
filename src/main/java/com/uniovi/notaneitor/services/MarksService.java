@@ -1,6 +1,7 @@
 package com.uniovi.notaneitor.services;
 
 import com.uniovi.notaneitor.entities.Mark;
+import com.uniovi.notaneitor.entities.User;
 import com.uniovi.notaneitor.repositories.MarksRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -33,6 +34,16 @@ public class MarksService {
         marksRepository.findAll().forEach(marks::add);
         return marks;
     }
+    public List<Mark> getMarksForUser(User user) {
+        List<Mark> marks = new ArrayList<>();
+        if (user.getRole().equals("ROLE_STUDENT")) {
+            marks = marksRepository.findAllByUser(user);}
+        if (user.getRole().equals("ROLE_PROFESSOR")) {
+            marks = getMarks(); }
+        return marks;
+    }
+
+
     public Mark getMark(Long id) {
         return marksRepository.findById(id).get();
     }
