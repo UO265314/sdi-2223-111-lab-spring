@@ -15,28 +15,11 @@
 
     <p th:text="#{welcome.marks}"></p>
     <div class="table-responsive">
-        <table class="table table-hover" th:fragment="tableMarks" id="tableMarks">
-            <thead>
-            <tr>
-                <th scope="col">id</th>
-                <th scope="col" th:text="#{welcome.marks.description}"></th>
-                <th scope="col" th:text="#{welcome.marks.score}"></th>
-                <th scope="col"></th>
-                <th scope="col"></th>
-                <th scope="col"></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="mark : ${markList}">
-                <td scope="row" th:text="${mark.id}"> 1</td>
-                <td th:text="${mark.description}"> Ejercicio 1</td>
-                <td th:text="${mark.score}">10</td>
-                <td><a th:href="${'/mark/details/' + mark.id}" th:text="#{details}"></a></td>
-                <td><a sec:authorize="hasRole('PROFESSOR')" th:href="${'/mark/edit/' + mark.id}" th:text="#{edit}"></a></td>
-                <td><a sec:authorize="hasRole('PROFESSOR')" th:href="${'/mark/delete/' + mark.id}" th:text="#{delete}"></a></td>
-            </tr>
-            </tbody>
-        </table>
+
+        <table th:replace="fragments/mark_table"></table>
+
+        <footer th:replace="fragments/pagination"/>
+
     </div>
 
 </div>

@@ -1,8 +1,11 @@
 package com.uniovi.notaneitor.controllers;
+import com.uniovi.notaneitor.services.MarksService;
 import com.uniovi.notaneitor.services.RolesService;
 import com.uniovi.notaneitor.services.SecurityService;
 import com.uniovi.notaneitor.validators.SignUpFormValidator;
 import org.springframework.beans.factory.annotation.*;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -24,6 +27,9 @@ public class UsersController {
 
     @Autowired
     private RolesService rolesService;
+
+    @Autowired
+    private MarksService marksService;
 
 
     @RequestMapping("/user/list")
@@ -104,12 +110,17 @@ public class UsersController {
     public String login() {
         return "login";
     }
+
+
     @RequestMapping(value = { "/home" }, method = RequestMethod.GET)
-    public String home(Model model) {
+    public String home(Model model, Pageable pageable) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String dni = auth.getName();
         User activeUser = usersService.getUserByDni(dni);
-        model.addAttribute("markList", activeUser.getMarks());
+
+        Page<Mark> marks = marksService.getMarksForUser(pageable, activeUser);
+        model.addAttribute("page", marks);
+        model.addAttribute("markList", marks.getContent());
         return "home";
     }
 
