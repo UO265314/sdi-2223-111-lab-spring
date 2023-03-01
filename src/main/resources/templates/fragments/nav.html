@@ -27,13 +27,13 @@
                 </div>
             </li>
 
-            <li class="nav-item dropdown" sec:authorize="hasRole('ROLE_ADMIN')">
+            <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="profesorDropdown" role="button" data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false" th:text="#{nav.professors}">
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="/professor/list" th:text="#{nav.professors.see}"></a>
-                    <a class="dropdown-item" href="/professor/add" th:text="#{nav.professors.add}"></a>
+                    <a class="dropdown-item" href="/professor/add" sec:authorize="hasRole('ROLE_ADMIN')" th:text="#{nav.professors.add}"></a>
                 </div>
             </li>
 
