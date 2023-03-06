@@ -46,6 +46,7 @@ public class SeleniumUtils {
 	 */
 	static public void waitTextIsNotPresentOnPage(WebDriver driver, String text, int timeout)
 	{
+		// TODO: Cambiado el tipo de timeout para que lo acepte el WebDriverWait.
 		Duration time_out = Duration.ofSeconds(timeout);
 		Boolean resultado = 
 				(new WebDriverWait(driver, time_out)).until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[contains(text(),'" + text + "')]")));
