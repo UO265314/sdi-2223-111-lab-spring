@@ -25,6 +25,8 @@ class NotaneitorApplicationTests {
     static WebDriver driver = getDriver(PathFirefox, Geckodriver);
     static String URL = "http://localhost:8090";
     public static WebDriver getDriver(String PathFirefox, String Geckodriver) {
+        System.out.println(PathFirefox);
+        System.out.println(Geckodriver);
         System.setProperty("webdriver.firefox.bin", PathFirefox);
         System.setProperty("webdriver.gecko.driver", Geckodriver);
         driver = new FirefoxDriver();
