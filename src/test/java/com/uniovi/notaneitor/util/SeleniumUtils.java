@@ -1,7 +1,6 @@
 package com.uniovi.notaneitor.util;
 
 
-import java.time.Duration;
 import java.util.List;
 
 
@@ -11,7 +10,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.springframework.boot.convert.DurationFormat;
 
 public class SeleniumUtils {
 
@@ -46,10 +44,8 @@ public class SeleniumUtils {
 	 */
 	static public void waitTextIsNotPresentOnPage(WebDriver driver, String text, int timeout)
 	{
-		// TODO: Cambiado el tipo de timeout para que lo acepte el WebDriverWait.
-		Duration time_out = Duration.ofSeconds(timeout);
 		Boolean resultado = 
-				(new WebDriverWait(driver, time_out)).until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[contains(text(),'" + text + "')]")));
+				(new WebDriverWait(driver, timeout)).until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[contains(text(),'" + text + "')]")));
 
 		Assertions.assertTrue(resultado);
 	}
@@ -64,10 +60,8 @@ public class SeleniumUtils {
 	 */
 	static public List<WebElement> waitLoadElementsByXpath(WebDriver driver, String xpath, int timeout)
 	{
-		Duration time_out = Duration.ofSeconds(timeout);
-
 		WebElement result =
-				(new WebDriverWait(driver, time_out)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+				(new WebDriverWait(driver, timeout)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
 		Assertions.assertNotNull(result);
 		return driver.findElements(By.xpath(xpath));
 	}
